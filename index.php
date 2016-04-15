@@ -38,6 +38,6 @@ if (empty($vsego) OR $vsego == 0)
 	if(!$rs){die('Error: ' . mysqli_error());}
 	$output = 'Обновление начинаем сначала!';
 }
-return $output;
+echo $output;
 mysqli_close($link);
 ?>
