@@ -1,6 +1,3 @@
-name: update_like_vk
-description: update likes on pages from vk.com.
-package: development
 language: php
 php:
   - '5.4'
