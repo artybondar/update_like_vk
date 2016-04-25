@@ -12,6 +12,12 @@ $owner_id = 1234567;
 $page_url = 'http://www.site.ru/pages/';
 $status = 1;
 $update = 0;
+$arrContextOptions=array(
+    "ssl"=>array(
+        "verify_peer"=>false,
+        "verify_peer_name"=>false,
+    ),
+);
 
 $result = mysqli_query($link, "SELECT `id`, `url` FROM `pages` WHERE `status` ='".$status."' and `update`='".$update."' LIMIT 50"); 
 while($row = mysql_fetch_assoc($result))
@@ -19,7 +25,7 @@ while($row = mysql_fetch_assoc($result))
 	$users[] = $row['url'];
 	$url = $row['url'];
 	$id = $row['id'];
-	$res = file_get_contents('https://api.vk.com/method/likes.getList?type=sitepage&owner_id='.$owner_id.'&page_url='.$page_url.$url);
+	$res = file_get_contents("https://api.vk.com/method/likes.getList?type=sitepage&owner_id=$owner_id&page_url=$page_url$url", false, stream_context_create($arrContextOptions));
 	$resp = json_decode($res, true);
 	$kol = $resp['response']['count'];
 	
