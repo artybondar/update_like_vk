@@ -20,7 +20,7 @@ $arrContextOptions=array(
 );
 
 $result = mysqli_query($link, "SELECT `id`, `url` FROM `pages` WHERE `status` ='".$status."' and `update`='".$update."' LIMIT 50"); 
-while($row = mysql_fetch_assoc($result))
+while($row = mysqli_fetch_assoc($result))
 {
 	$users[] = $row['url'];
 	$url = $row['url'];
